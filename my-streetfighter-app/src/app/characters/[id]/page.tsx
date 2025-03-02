@@ -1,29 +1,12 @@
-import { characters } from '@/data/characters';
-import { GetStaticPaths, GetStaticProps } from 'next';
+import { characters } from "@/data/characters";
+import { GetStaticPaths, GetStaticProps } from "next";
 
 interface CharacterProps {
-  character: typeof characters[0];
+  character: (typeof characters)[0];
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = characters.map((character) => ({
-    params: { id: character.id },
-  }));
-
-  return { paths, fallback: false };
-};
-
-export const getStaticProps: GetStaticProps<CharacterProps> = async ({ params }) => {
-  const character = characters.find((c) => c.id === params?.id);
-
-  if (!character) {
-    return { notFound: true };
-  }
-
-  return { props: { character } };
-};
-
-export default function CharacterPage({ character }: CharacterProps) {
+export default function CharacterPage({ params }: { params: { id: string } }) {
+  const character = characters.find((character) => character.id === params.id);
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-4xl font-bold mb-4">{character.name}</h1>
