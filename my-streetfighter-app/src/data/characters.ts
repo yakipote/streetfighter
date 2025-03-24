@@ -2,6 +2,7 @@ export const characters = [
   {
     id: 'ryu',
     name: 'Ryu',
+    imagePath: '/images/characters/ryu.jpg',
     profile: {
       height: '175cm',
       weight: '85kg',
@@ -12,6 +13,7 @@ export const characters = [
   {
     id: 'chun-li',
     name: 'Chun-Li',
+    imagePath: '/images/characters/chun-li.jpg',
     profile: {
       height: '170cm',
       weight: 'Secret',
